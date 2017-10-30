@@ -408,7 +408,7 @@ Blockly.Blocks.WiFiJsonObject = {
     this.appendValueInput('addInput') 
      .setCheck(String)
      .setAlign(Blockly.ALIGN_RIGHT)
-     .appendField(Blockly.dotMatrixAddVar)
+     .appendField("jsonObject")
      .appendField(new Blockly.FieldTextInput('root'),'jsonName');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -422,23 +422,45 @@ Blockly.Blocks.WiFiJsonObject = {
 Blockly.Blocks.WiFiJsonPraseObject = {
     init: function() {
     this.setColour(colorSet);
-
     this.appendDummyInput()
-      .appendField(Blockly.dotMatrixAddVar)
-      .appendField(new Blockly.FieldTextInput('64'),'item');
+      .appendField("all json");
+      // .appendField(new Blockly.FieldTextInput('64'),'item');
     this.setOutput(true, String);
-
-
-    // this.appendValueInput('addInput') 
-    //  .setCheck(String)
-    //  .setAlign(Blockly.ALIGN_RIGHT)
-    //  .appendField(Blockly.dotMatrixAddVar)
-    //  .appendField(new Blockly.FieldTextInput('64'),'NUM');
-    // this.setOutput(true, String);
-    // this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
   }
 };
 
+Blockly.Blocks.JsonObjectVerify = {
+    init: function() {
+    this.setColour(colorSet);
+    this.appendDummyInput()
+      .appendField("verify")
+      .appendField(new Blockly.FieldTextInput('root'),'jsonName');
+    this.setOutput(true, Boolean);
+  }
+};
+
+
+Blockly.Blocks.JsonObjectPraseItem = {
+    init: function() {
+    this.setColour(colorSet);
+    this.appendDummyInput()
+      .appendField("json item")
+      .appendField(new Blockly.FieldTextInput('root'),'jsonObj')
+      .appendField(new Blockly.FieldTextInput('item'),'item');
+    this.setOutput(true, String);
+  }
+};
+
+Blockly.Blocks.JsonObjectPraseItemArray = {
+    init: function() {
+    this.setColour(colorSet);
+    this.appendDummyInput()
+      .appendField("json item")
+      .appendField(new Blockly.FieldTextInput('root'),'jsonObj')
+      .appendField(new Blockly.FieldTextInput('item'),'item');
+    this.setOutput(true, String);
+  }
+};
 
 
 Blockly.Blocks.WiFimCottonATBoolP2Input = {

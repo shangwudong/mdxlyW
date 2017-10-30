@@ -390,15 +390,34 @@ Blockly.Arduino.WiFiJsonObject = function() {
 
 
 Blockly.Arduino.WiFiJsonPraseObject = function() {
+  // var item=this.getFieldValue('item');
+  var code = '';
+  code+='jsonBuffer.parseObject(json);\n';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 
-  // var addInput = Blockly.Arduino.valueToCode(this, 'addInput', Blockly.Arduino.ORDER_ATOMIC) || '';
+
+Blockly.Arduino.JsonObjectVerify = function() {
+  var jsonName=this.getFieldValue('jsonName');
+  var code = '';
+  code+=jsonName+'.success()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+
+Blockly.Arduino.JsonObjectPraseItem = function() {
+  var jsonObj=this.getFieldValue('jsonObj');
   var item=this.getFieldValue('item');
   var code = '';
-  code+='jsonBuffer.parseObject(json);';
-  // code +=thisNum;
-  // if(addInput!='') {
-  //   code+=','+addInput;
-  // }
+  code+=jsonObj+'["'+item+'"];\n';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.JsonObjectPraseItemArray = function() {
+  var jsonObj=this.getFieldValue('jsonObj');
+  var item=this.getFieldValue('item');
+  var code = '';
+  code+=jsonObj+'["'+item+'"];\n';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
