@@ -15,7 +15,7 @@ Blockly.Arduino.audioProPrepare = function() {
 	Blockly.Arduino.definitions_['define_AudioPro'] = audioProDefine;
 
 	var audioProSetup='';
-	audioProSetup+='if ( midiPlayer.begin()) {\n';
+	audioProSetup+='if (!midiPlayer.begin()) {\n';
 	audioProSetup+='	while (1);\n';
 	audioProSetup+='}\n';
 	audioProSetup+='midiPlayer.applyPatch(MIDIPatch, sizeof(MIDIPatch) / sizeof(uint16_t));\n';

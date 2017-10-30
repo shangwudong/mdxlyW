@@ -403,21 +403,6 @@ Blockly.Blocks.WiFimCottonJsonPraseAI = {
 
 
 Blockly.Blocks.WiFiJsonObject = {
-  // init: function() {
-  //   this.setColour(colorSet);
-
-  // this.appendDummyInput()
-  //     .appendField("jsonObject")
-  //     .appendField(new Blockly.FieldTextInput("root"), "jsonName");
-
-  // this.appendValueInput('JsonInput')
-  //   .setCheck(String)
-  //   .setAlign(Blockly.ALIGN_RIGHT)
-  //   .appendField("input");
-  //   this.setPreviousStatement(true, null);
-  //   this.setNextStatement(true, null);
-
-
       init: function() {
     this.setColour(colorSet);
     this.appendValueInput('addInput') 
@@ -435,27 +420,22 @@ Blockly.Blocks.WiFiJsonObject = {
 
 
 Blockly.Blocks.WiFiJsonPraseObject = {
-  // init: function() {
-  //   this.setColour(colorSet);
-
-  // this.appendDummyInput()
-  //   .appendField("praseJsonObject")
-  //   .appendField('name:')
-  //   .appendField(new Blockly.FieldTextInput("objName"), "input");
-
-  //   this.setInputsInline(true);
-  //   this.setOutput(true, String);
-
-  // }
     init: function() {
     this.setColour(colorSet);
-    this.appendValueInput('addInput') 
-     .setCheck(String)
-     .setAlign(Blockly.ALIGN_RIGHT)
-     .appendField(Blockly.dotMatrixAddVar)
-     .appendField(new Blockly.FieldTextInput('64'),'NUM');
+
+    this.appendDummyInput()
+      .appendField(Blockly.dotMatrixAddVar)
+      .appendField(new Blockly.FieldTextInput('64'),'item');
     this.setOutput(true, String);
-    this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
+
+
+    // this.appendValueInput('addInput') 
+    //  .setCheck(String)
+    //  .setAlign(Blockly.ALIGN_RIGHT)
+    //  .appendField(Blockly.dotMatrixAddVar)
+    //  .appendField(new Blockly.FieldTextInput('64'),'NUM');
+    // this.setOutput(true, String);
+    // this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
   }
 };
 
