@@ -929,6 +929,18 @@
 
 
 
+	<block type="WiFimCottonJsonPraseAI">
+	</block>
+
+	<block type="WiFiJsonObject">
+		 		<value name="JsonInput">
+		</value>
+	</block>
+
+	<block type="WiFiJsonPraseObject">
+	</block>
+
+
 	<block type="WiFimCottonATBoolP2Input"></block>
 
 

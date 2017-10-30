@@ -332,6 +332,84 @@ Blockly.Arduino.WiFimCottonJsonPrase = function() {
 };
 
 
+Blockly.Arduino.WiFimCottonJsonPraseAI = function() {
+  var branch = Blockly.Arduino.statementToCode(this, 'jsonPrase');
+  var input = this.getFieldValue('input');
+
+  var wifiAIDefine='';
+  wifiAIDefine+='#include <ArduinoJson.h>\n';
+  wifiAIDefine+='const static uint16_t buffSize = '+input+';\n';
+  wifiAIDefine+='uint16_t index = 0;\n';
+  wifiAIDefine+='char jsonAI[buffSize] = { 0x00 };\n';
+  wifiAIDefine+="const static char endFlag='\\n';\n";
+  wifiAIDefine+='\n';
+
+  wifiAIDefine+='void praseDoing() {\n';
+  wifiAIDefine+='  StaticJsonBuffer<buffSize> jsonBuffer;\n';
+  wifiAIDefine+=branch;
+  wifiAIDefine+='}\n';
+
+  Blockly.Arduino.definitions_['var_WiFiAIDefine'] = wifiAIDefine;
+
+  var code='';
+  code+='if (wifi.getUart()->available() > 0) {\n';
+  code+='  char c = wifi.getUart()->read();\n';
+  code+='  if (index == 0) { //clear\n';
+  code+='    for (uint16_t i = 0; i < buffSize; i++) {\n';
+  code+='      jsonAI[i] = 0x00;\n';
+  code+='    }\n';
+  code+='  }\n';
+  code+='  if (c != endFlag) {\n';
+  code+='    jsonAI[index] = c;\n';
+  code+='    index++;\n';
+  code+='  } else {\n';
+  code+='    index = 0;\n';
+  code+='    if(jsonAI[0]==0x7B) {\n';
+  code+='      praseDoing();\n';
+  code+='    } else {\n';
+  code+='      Serial.println(jsonAI);\n';
+  code+='    }\n';
+  code+='  }\n';
+  code+='}\n';
+  return code;
+};
+
+
+Blockly.Arduino.WiFiJsonObject = function() {
+  // var JsonInput = Blockly.Arduino.valueToCode(this, 'JsonInput', Blockly.Arduino.ORDER_ATOMIC);
+  // var jsonName = this.getFieldValue('jsonName');
+  // var code='';
+  // code+='JsonObject& '+jsonName+'=';
+  // // code+='\n';
+  // // code+='\n';
+  // return code;
+  var addInput = Blockly.Arduino.valueToCode(this, 'addInput', Blockly.Arduino.ORDER_ATOMIC) || '';
+  var jsonName=this.getFieldValue('jsonName');
+  var code = '';
+  code+='JsonObject& '+jsonName+'=';
+  if(addInput!='') {
+    code+=addInput;
+  }
+  // return [code, Blockly.Arduino.ORDER_ATOMIC];
+  return code;
+};
+
+
+Blockly.Arduino.WiFiJsonPraseObject = function() {
+  // var input = this.getFieldValue('input');
+  // // var StringInput = Blockly.Arduino.valueToCode(this, 'StringInput', Blockly.Arduino.ORDER_ATOMIC);
+  // var code='jsonBuffer.parseObject(json)';
+  // return [code, Blockly.Arduino.ORDER_ATOMIC];
+  var addInput = Blockly.Arduino.valueToCode(this, 'addInput', Blockly.Arduino.ORDER_ATOMIC) || '';
+  var thisNum=this.getFieldValue('NUM');
+  var code = '';
+  code +=thisNum;
+  if(addInput!='') {
+    code+=','+addInput;
+  }
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 
 Blockly.Arduino.WiFimCottonATBoolP2Input = function() {
   var input1 = this.getFieldValue('input1');

@@ -384,6 +384,80 @@ this.appendValueInput('StringInput')
   }
 };
 
+Blockly.Blocks.WiFimCottonJsonPraseAI = {
+  init: function() {
+    this.setColour(colorSet);
+
+  this.appendDummyInput()
+    .appendField(Blockly.WiFiATmqttJsonPrase)
+    .appendField('size:')
+    .appendField(new Blockly.FieldTextInput("500"), "input");
+
+    this.setInputsInline(true);
+    this.appendStatementInput("jsonPrase");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+
+  }
+};
+
+
+Blockly.Blocks.WiFiJsonObject = {
+  // init: function() {
+  //   this.setColour(colorSet);
+
+  // this.appendDummyInput()
+  //     .appendField("jsonObject")
+  //     .appendField(new Blockly.FieldTextInput("root"), "jsonName");
+
+  // this.appendValueInput('JsonInput')
+  //   .setCheck(String)
+  //   .setAlign(Blockly.ALIGN_RIGHT)
+  //   .appendField("input");
+  //   this.setPreviousStatement(true, null);
+  //   this.setNextStatement(true, null);
+
+
+      init: function() {
+    this.setColour(colorSet);
+    this.appendValueInput('addInput') 
+     .setCheck(String)
+     .setAlign(Blockly.ALIGN_RIGHT)
+     .appendField(Blockly.dotMatrixAddVar)
+     .appendField(new Blockly.FieldTextInput('root'),'jsonName');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+
+    this.setTooltip("获取JsonObject");
+
+  }
+};
+
+
+Blockly.Blocks.WiFiJsonPraseObject = {
+  // init: function() {
+  //   this.setColour(colorSet);
+
+  // this.appendDummyInput()
+  //   .appendField("praseJsonObject")
+  //   .appendField('name:')
+  //   .appendField(new Blockly.FieldTextInput("objName"), "input");
+
+  //   this.setInputsInline(true);
+  //   this.setOutput(true, String);
+
+  // }
+    init: function() {
+    this.setColour(colorSet);
+    this.appendValueInput('addInput') 
+     .setCheck(String)
+     .setAlign(Blockly.ALIGN_RIGHT)
+     .appendField(Blockly.dotMatrixAddVar)
+     .appendField(new Blockly.FieldTextInput('64'),'NUM');
+    this.setOutput(true, String);
+    this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
+  }
+};
 
 
 
@@ -418,10 +492,10 @@ Blockly.Blocks.WiFiTCPSend = {
   init: function() {
     this.setColour(colorSet);
 
-this.appendDummyInput()
+  this.appendDummyInput()
     .appendField(Blockly.WiFiATTCPSend)
 
-this.appendValueInput('StringInput')
+  this.appendValueInput('StringInput')
         .setCheck(String)
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.WiFiATmqttContext);
