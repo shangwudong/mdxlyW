@@ -390,7 +390,7 @@ Blockly.Blocks.WiFimCottonJsonPraseAI = {
 
   this.appendDummyInput()
     .appendField(Blockly.WiFiATmqttJsonPrase)
-    .appendField('size:')
+    .appendField(Blockly.MDAIJsonSize)
     .appendField(new Blockly.FieldTextInput("500"), "input");
 
     this.setInputsInline(true);
@@ -406,9 +406,9 @@ Blockly.Blocks.WiFiJsonObject = {
       init: function() {
     this.setColour(colorSet);
     this.appendValueInput('addInput') 
-     .setCheck(String)
+     .setCheck(String,Number)
      .setAlign(Blockly.ALIGN_RIGHT)
-     .appendField("jsonObject")
+     .appendField(Blockly.MDAIJsonObject)
      .appendField(new Blockly.FieldTextInput('root'),'jsonName');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -423,8 +423,7 @@ Blockly.Blocks.WiFiJsonPraseObject = {
     init: function() {
     this.setColour(colorSet);
     this.appendDummyInput()
-      .appendField("all json");
-      // .appendField(new Blockly.FieldTextInput('64'),'item');
+      .appendField(Blockly.MDAIJsonAll);
     this.setOutput(true, String);
   }
 };
@@ -433,7 +432,7 @@ Blockly.Blocks.JsonObjectVerify = {
     init: function() {
     this.setColour(colorSet);
     this.appendDummyInput()
-      .appendField("verify")
+      .appendField(Blockly.MDAIJsonVerify)
       .appendField(new Blockly.FieldTextInput('root'),'jsonName');
     this.setOutput(true, Boolean);
   }
@@ -444,10 +443,11 @@ Blockly.Blocks.JsonObjectPraseItem = {
     init: function() {
     this.setColour(colorSet);
     this.appendDummyInput()
-      .appendField("json item")
+      .appendField(Blockly.MDAIJsonObject)
       .appendField(new Blockly.FieldTextInput('root'),'jsonObj')
+      .appendField(Blockly.MDAIJsonItem)
       .appendField(new Blockly.FieldTextInput('item'),'item');
-    this.setOutput(true, String);
+    this.setOutput(true, String,Number);
   }
 };
 
@@ -455,10 +455,17 @@ Blockly.Blocks.JsonObjectPraseItemArray = {
     init: function() {
     this.setColour(colorSet);
     this.appendDummyInput()
-      .appendField("json item")
+      .appendField(Blockly.MDAIJsonObject)
       .appendField(new Blockly.FieldTextInput('root'),'jsonObj')
+      .appendField(Blockly.MDAIJsonItem)
       .appendField(new Blockly.FieldTextInput('item'),'item');
-    this.setOutput(true, String);
+
+    this.appendValueInput('numInput')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MDAIJsonIndex);
+    this.setInputsInline(true);
+    this.setOutput(true, String,Number);
   }
 };
 

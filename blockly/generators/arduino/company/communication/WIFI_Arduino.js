@@ -145,6 +145,7 @@ Blockly.Arduino.WiFimCottonATPre = function() {
   // var authToken = this.getFieldValue('authToken');
 
   var  WiFiATDefine='#include <ESP8266.h>\n';
+  WiFiATDefine+='#include <ArduinoJson.h>\n';
   WiFiATDefine+='//CoreUSB UART Port: [Serial1] [D0,D1]\n';
   WiFiATDefine+='//Core+ UART Port: [Serial1] [D2,D3]\n';
   WiFiATDefine+='#if defined(__AVR_ATmega32U4__) || defined(__AVR_ATmega1284P__) || defined (__AVR_ATmega644P__) || defined(__AVR_ATmega128RFA1__)\n';
@@ -163,72 +164,16 @@ Blockly.Arduino.WiFimCottonATPre = function() {
 
   Blockly.Arduino.definitions_['var_WiFiATDefine'] = WiFiATDefine;
 
-
-  var jsonPrase='';
-  jsonPrase+='String solution(String _sta, char *c)\n';
-  jsonPrase+='{\n';
-  jsonPrase+='  String data;\n';
-  jsonPrase+='  _sta.trim();\n';
-  jsonPrase+='  if (_sta.startsWith("{") && _sta.endsWith("}"))\n';
-  jsonPrase+='  {\n';
-  jsonPrase+='    _sta = _sta.substring(1, _sta.length() - 1);\n';
-  jsonPrase+='    _sta.replace("\\\"", "");\n';
-  jsonPrase+='    uint8_t _length = _sta.length();\n';
-  jsonPrase+='    char buf[_length];\n';
-  jsonPrase+='    char c_all[30] = "";\n';
-  jsonPrase+='    char data1[] = ":%s";\n';
-  jsonPrase+='    strcat(c_all, c);\n';
-  jsonPrase+='    strcat(c_all, data1);\n';
-  jsonPrase+='    sscanf(_sta.c_str(), c_all, &buf);\n';
-  jsonPrase+='    data = String(buf);\n';
-  jsonPrase+='  }\n';
-  jsonPrase+='  if (data != NULL)\n';
-  jsonPrase+='    return data;\n';
-  jsonPrase+='}\n';
-
-  jsonPrase+='String uploadData(char* _st, int _data) {\n';
-  jsonPrase+='  String send_data = "";\n';
-  jsonPrase+='  send_data = "{\\"";\n';
-  jsonPrase+='  send_data += _st;\n';
-  jsonPrase+='  send_data += "\\":\\"";\n';
-  jsonPrase+='  send_data += _data;\n';
-  jsonPrase+='  send_data += "\\"}";\n';
-  jsonPrase+='  return send_data;\n';
-  jsonPrase+='}\n';
-
-
-  // jsonPrase+='String uploadData(char* _st, char* _data) {\n';
-  // jsonPrase+='  String send_data = "";\n';
-  // jsonPrase+='  send_data = "{\\"";\n';
-  // jsonPrase+='  send_data += _st;\n';
-  // jsonPrase+='  send_data += "\\":\\"";\n';
-  // jsonPrase+='  send_data += _data;\n';
-  // jsonPrase+='  send_data += "\\"}";\n';
-  // jsonPrase+='  return send_data;\n';
-  // jsonPrase+='}\n';
-  jsonPrase+='String uploadData(String _st, String _data) {\n';
-  jsonPrase+='  String send_data = "";\n';
-  jsonPrase+='  send_data = "{\\"";\n';
-  jsonPrase+='  send_data += _st;\n';
-  jsonPrase+='  send_data += "\\":\\"";\n';
-  jsonPrase+='  send_data += _data;\n';
-  jsonPrase+='  send_data += "\\"}";\n';
-  jsonPrase+='  return send_data;\n';
-  jsonPrase+='}\n';
-
-
-  Blockly.Arduino.definitions_['var_WiFiATJason'] = jsonPrase;
-
   var WiFiATInit='delay(100);\n';
   WiFiATInit+='WifiInit(EspSerial, UARTSPEED);\n';
   WiFiATInit+='\n';
   Blockly.Arduino.setups_['setup_WiFiATInit'] = WiFiATInit;
 
 
-  var code='\n';
-  code+='\n';
-  //code+=branch;
-  code+='\n';
+  var code='';
+  // code+='\n';
+  // //code+=branch;
+  // code+='\n';
   
   return code;
 };
@@ -327,6 +272,32 @@ Blockly.Arduino.WiFimCottonATBoolPString = function() {
 Blockly.Arduino.WiFimCottonJsonPrase = function() {
   var input = this.getFieldValue('input');
   var StringInput = Blockly.Arduino.valueToCode(this, 'StringInput', Blockly.Arduino.ORDER_ATOMIC);
+
+
+  var jsonPrase='';
+  jsonPrase+='String solution(String _sta, char *c)\n';
+  jsonPrase+='{\n';
+  jsonPrase+='  String data;\n';
+  jsonPrase+='  _sta.trim();\n';
+  jsonPrase+='  if (_sta.startsWith("{") && _sta.endsWith("}"))\n';
+  jsonPrase+='  {\n';
+  jsonPrase+='    _sta = _sta.substring(1, _sta.length() - 1);\n';
+  jsonPrase+='    _sta.replace("\\\"", "");\n';
+  jsonPrase+='    uint8_t _length = _sta.length();\n';
+  jsonPrase+='    char buf[_length];\n';
+  jsonPrase+='    char c_all[30] = "";\n';
+  jsonPrase+='    char data1[] = ":%s";\n';
+  jsonPrase+='    strcat(c_all, c);\n';
+  jsonPrase+='    strcat(c_all, data1);\n';
+  jsonPrase+='    sscanf(_sta.c_str(), c_all, &buf);\n';
+  jsonPrase+='    data = String(buf);\n';
+  jsonPrase+='  }\n';
+  jsonPrase+='  if (data != NULL)\n';
+  jsonPrase+='    return data;\n';
+  jsonPrase+='}\n';
+
+  Blockly.Arduino.definitions_['var_WiFiATJsonPrase'] = jsonPrase;
+
   var code='solution('+StringInput+', '+input+')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
@@ -337,7 +308,6 @@ Blockly.Arduino.WiFimCottonJsonPraseAI = function() {
   var input = this.getFieldValue('input');
 
   var wifiAIDefine='';
-  wifiAIDefine+='#include <ArduinoJson.h>\n';
   wifiAIDefine+='const static uint16_t buffSize = '+input+';\n';
   wifiAIDefine+='uint16_t index = 0;\n';
   wifiAIDefine+='char jsonAI[buffSize] = { 0x00 };\n';
@@ -376,23 +346,20 @@ Blockly.Arduino.WiFimCottonJsonPraseAI = function() {
 
 
 Blockly.Arduino.WiFiJsonObject = function() {
-
   var addInput = Blockly.Arduino.valueToCode(this, 'addInput', Blockly.Arduino.ORDER_ATOMIC) || '';
   var jsonName=this.getFieldValue('jsonName');
   var code = '';
   code+='JsonObject& '+jsonName+'=';
   if(addInput!='') {
-    code+=addInput;
+    code+=addInput+';\n';
   }
-  // return [code, Blockly.Arduino.ORDER_ATOMIC];
   return code;
 };
 
 
 Blockly.Arduino.WiFiJsonPraseObject = function() {
-  // var item=this.getFieldValue('item');
   var code = '';
-  code+='jsonBuffer.parseObject(json);\n';
+  code+='jsonBuffer.parseObject(jsonAI)';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -409,15 +376,16 @@ Blockly.Arduino.JsonObjectPraseItem = function() {
   var jsonObj=this.getFieldValue('jsonObj');
   var item=this.getFieldValue('item');
   var code = '';
-  code+=jsonObj+'["'+item+'"];\n';
+  code+=jsonObj+'["'+item+'"]';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.JsonObjectPraseItemArray = function() {
   var jsonObj=this.getFieldValue('jsonObj');
   var item=this.getFieldValue('item');
+  var numInput = Blockly.Arduino.valueToCode(this, 'numInput', Blockly.Arduino.ORDER_ATOMIC);
   var code = '';
-  code+=jsonObj+'["'+item+'"];\n';
+  code+=jsonObj+'["'+item+'"]['+numInput+']';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -442,6 +410,22 @@ Blockly.Arduino.WiFiTCPSend = function() {
 
 
 Blockly.Arduino.WiFiMqttJsonBuilderS = function() {
+
+
+  var jsonPrase='';
+  jsonPrase+='String uploadData(String _st, String _data) {\n';
+  jsonPrase+='  String send_data = "";\n';
+  jsonPrase+='  send_data = "{\\"";\n';
+  jsonPrase+='  send_data += _st;\n';
+  jsonPrase+='  send_data += "\\":\\"";\n';
+  jsonPrase+='  send_data += _data;\n';
+  jsonPrase+='  send_data += "\\"}";\n';
+  jsonPrase+='  return send_data;\n';
+  jsonPrase+='}\n';
+
+Blockly.Arduino.definitions_['var_WiFiATJsonUPS'] = jsonPrase;
+
+
   var input = this.getFieldValue('input');
   var StringInput = Blockly.Arduino.valueToCode(this, 'StringInput', Blockly.Arduino.ORDER_ATOMIC);
   var code='uploadData('+input+', '+StringInput+')';
@@ -449,6 +433,20 @@ Blockly.Arduino.WiFiMqttJsonBuilderS = function() {
 };
 
 Blockly.Arduino.WiFiMqttJsonBuilderI = function() {
+
+  var jsonPrase='';
+  jsonPrase+='String uploadData(char* _st, int _data) {\n';
+  jsonPrase+='  String send_data = "";\n';
+  jsonPrase+='  send_data = "{\\"";\n';
+  jsonPrase+='  send_data += _st;\n';
+  jsonPrase+='  send_data += "\\":\\"";\n';
+  jsonPrase+='  send_data += _data;\n';
+  jsonPrase+='  send_data += "\\"}";\n';
+  jsonPrase+='  return send_data;\n';
+  jsonPrase+='}\n';
+
+  Blockly.Arduino.definitions_['var_WiFiATJsonUPI'] = jsonPrase;
+
   var input = this.getFieldValue('input');
   var numInput = Blockly.Arduino.valueToCode(this, 'numInput', Blockly.Arduino.ORDER_ATOMIC);
   var code='uploadData('+input+', '+numInput+')';

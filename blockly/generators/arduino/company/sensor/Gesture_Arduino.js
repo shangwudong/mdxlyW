@@ -21,7 +21,7 @@ Blockly.Arduino.MDGesturePre = function() {
 	switch(gestureMode)
 	{
 	case 'gesture':
-	  GestureSetup+='gestureSensor.setGestureGain(GGAIN_2X);\n';
+	  GestureSetup+='gestureSensor.setGestureGain(GGAIN_1X);\n';
 	  GestureSetup+='gestureSensor.enableGestureSensor(true);\n';
 	  break;
 	case 'color':
