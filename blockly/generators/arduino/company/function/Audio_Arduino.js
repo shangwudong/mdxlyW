@@ -28,9 +28,9 @@ Blockly.Arduino.mCookie_Audio_Serial = function() {
 
   Blockly.Arduino.definitions_['define_MDAudio'] = defineMDAudio;
 
-  var AudioInit='AUDIO.init('+DEVICE+','+MODE+','+Voice+');\n';
-  AudioInit+='AUDIO.choose(1);\n';
-  AudioInit+='AUDIO.pause();\n';
+  var AudioInit='AUDIO.begin('+DEVICE+','+MODE+','+Voice+');\n';
+  AudioInit+='AUDIO.chooseMusic(1);\n';
+  AudioInit+='AUDIO.pauseMusic();\n';
 
   Blockly.Arduino.setups_['setup_Audio_Init'] = AudioInit;
 
@@ -51,7 +51,7 @@ Blockly.Arduino.mCookie_Audio_Choose = function() {
   var audioNumber = Blockly.Arduino.valueToCode(this, 'audioNumber', Blockly.Arduino.ORDER_ATOMIC);
 
   var code='';
-  code+='AUDIO.choose('+audioNumber+');\n';
+  code+='AUDIO.chooseMusic('+audioNumber+');\n';
 
   return code;
 };

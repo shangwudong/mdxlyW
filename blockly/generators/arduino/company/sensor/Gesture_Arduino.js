@@ -28,7 +28,7 @@ Blockly.Arduino.MDGesturePre = function() {
 	  GestureSetup+='gestureSensor.enableLightSensor(true);\n';
 	  break;
 	case 'proximity':
-		GestureSetup+='gestureSensor.setProximityGain(PGAIN_2X);\n';
+		GestureSetup+='gestureSensor.setProximityGain(PGAIN_1X);\n';
 		GestureSetup+='gestureSensor.enableProximitySensor(true);\n';
 	  break;
 	default:

@@ -42,12 +42,12 @@ Blockly.Blocks.mCookie_Audio_Control={
 init:function(){
 
 
-    var getType =[[Blockly.AudioPlay, "play()"], 
-                  [Blockly.AudioPause, "pause()"], 
-                  [Blockly.AudioNext, "next()"], 
-                  [Blockly.AudioPrev, "prev()"],
-                  [Blockly.AudioVolUp, "volUp()"],
-                  [Blockly.AudioVolDown, "volDown()"]
+    var getType =[[Blockly.AudioPlay, "playMusic()"], 
+                  [Blockly.AudioPause, "pauseMusic()"], 
+                  [Blockly.AudioNext, "nextMusic()"], 
+                  [Blockly.AudioPrev, "prevMusic()"],
+                  [Blockly.AudioVolUp, "volumeUp()"],
+                  [Blockly.AudioVolDown, "volumeDown()"]
                 ];
 
     this.setColour(colorSet);

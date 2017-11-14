@@ -294,15 +294,16 @@ Blockly.Blocks.MDvariables_declare = {
                 ['char','char'],
                 ['String','String'],
                 ['float', 'float'],
-                ['double', 'double']];
+                ['double', 'double'],
+                ['const char*', 'const char*']];
 
     this.setColour(colorSet);
     this.appendValueInput('VALUE', null)
         .appendField(Blockly.MIXLY_DECLARE)
         .appendField(new Blockly.FieldTextInput('item'), 'VAR')
         .appendField(Blockly.MIXLY_AS)
-      .appendField(new Blockly.FieldDropdown(FLIP), "TYPE")
-      .appendField(Blockly.MIXLY_VALUE);
+        .appendField(new Blockly.FieldDropdown(FLIP), "TYPE")
+        .appendField(Blockly.MIXLY_VALUE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_VARIABLES_DECLARE);

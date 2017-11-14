@@ -917,8 +917,6 @@
 		</value>
 	</block>
 
-
-
 	<block type="WiFimCottonJsonPrase">
  		<value name="StringInput">
 			<shadow type="text">
@@ -926,8 +924,6 @@
 			</shadow>
 		</value>
 	</block>
-
-
 
 	<block type="WiFimCottonJsonPraseAI">
 	</block>
