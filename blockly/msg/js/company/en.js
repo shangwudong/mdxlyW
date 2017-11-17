@@ -71,7 +71,7 @@ Blockly.gyroZ='gyro Z:';
 Blockly.motionYaw='Yaw';
 Blockly.motionPitch='Pitch';
 Blockly.motionRoll='Roll';
-Blockly.MDSerialMotion='Serial Motion Receive(D2/D3)';
+Blockly.MDSerialMotion='Serial Motion Receive';
 
 
 

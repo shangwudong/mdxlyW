@@ -74,7 +74,7 @@ Blockly.gyroZ='角速度 Z';
 Blockly.motionYaw='偏航';
 Blockly.motionPitch='俯仰';
 Blockly.motionRoll='翻滚';
-Blockly.MDSerialMotion='串口姿态接收(D2/D3)';
+Blockly.MDSerialMotion='串口姿态接收';
 
 
 

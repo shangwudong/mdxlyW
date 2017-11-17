@@ -10,8 +10,18 @@ var colorSet='#efa752';
 Blockly.Blocks.MDSerialMotionPre = {
   init: function() {
     this.setColour(colorSet);
+
+    var ss =[["2,3", "2"], 
+              ["4,5", "4"], 
+              ["6,7", "6"], 
+              ["8,9", "8"], 
+              ["10,11", "10"], 
+              ["ideaBox", "1"], 
+             ];
+
     this.appendDummyInput("")
-        .appendField(Blockly.MDSerialMotion);
+        .appendField(Blockly.MDSerialMotion)
+        .appendField(new Blockly.FieldDropdown(ss), "ss");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     var tip="接收串口姿态角\n";

@@ -187,7 +187,7 @@ Blockly.Blocks.MDMotorPlusRunStop = {
         .appendField(Blockly.MDMotorPlusControl)
         .appendField(Blockly.leftSpeed)
         .appendField(new Blockly.FieldDropdown(motorPlusBrakeFree), 'motorPlusLeft')
-        .appendField(Blockly.leftSpeed)
+        .appendField(Blockly.rightSpeed)
         .appendField(new Blockly.FieldDropdown(motorPlusBrakeFree), 'motorPlusRight');
 
     //this.setOutput(true, Number);

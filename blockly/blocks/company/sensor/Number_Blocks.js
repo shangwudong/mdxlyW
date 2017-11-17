@@ -16,10 +16,18 @@ Blockly.Blocks.NumberTubePre = {
                     ];
 
 
+    var ss =[["2,3", "2"], 
+              ["4,5", "4"], 
+              ["6,7", "6"], 
+              ["8,9", "8"], 
+              ["10,11", "10"], 
+              ["ideaBox", "1"], 
+             ];
+
     this.appendDummyInput("")
         .appendField(Blockly.MD_NixieTube)
-        .appendField(Blockly.MDStpperPrepare);
-        
+        .appendField(Blockly.MDStpperPrepare)
+        .appendField(new Blockly.FieldDropdown(ss), "ss");
 
     this.appendValueInput("indexNum", Number)
         .setCheck(Number)

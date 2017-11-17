@@ -16,16 +16,54 @@ Blockly.Arduino.NumberTubePre = function() {
   NumberTubeInclude+="#include <Microduino_Number.h>\n";
   Blockly.Arduino.definitions_['var_NumberTubeInclude'] = NumberTubeInclude;
 
+  var ss = this.getFieldValue('ss');
 
   var NumberTubeVar='';
   NumberTubeVar+='//Core UART Port: [SoftSerial] [D2,D3]\n';
   NumberTubeVar+='#if defined (__AVR_ATmega168__) || defined (__AVR_ATmega328__) || defined (__AVR_ATmega328P__)\n';
-  NumberTubeVar+='SoftwareSerial mySerial(2, 3);\n';
-  NumberTubeVar+='#define NumberSerial mySerial\n';
+  
+
+  if(ss==2) {
+    NumberTubeVar+='SoftwareSerial mySerialS(2, 3);\n';
+  } else if(ss==4) {
+    NumberTubeVar+='SoftwareSerial mySerialS(4, 5);\n';
+  } else if(ss==6) {
+    NumberTubeVar+='SoftwareSerial mySerialS(6, 7);\n';
+  } else if(ss==8) {
+    NumberTubeVar+='SoftwareSerial mySerialS(8, 9);\n';
+  } else if(ss==10) {
+    NumberTubeVar+='SoftwareSerial mySerialS(10, 11);\n';
+  } else if(ss=1) {
+    NumberTubeVar+='SoftwareSerial mySerialS(-1, 9);\n';
+  }
+
+
+  // NumberTubeVar+='SoftwareSerial mySerialS(2, 3);\n';
+  NumberTubeVar+='#define NumberSerial mySerialS\n';
   NumberTubeVar+='#endif\n';
   NumberTubeVar+='//Core+ UART Port: [Serial1] [D2,D3]\n';
   NumberTubeVar+='#if defined(__AVR_ATmega1284P__) || defined (__AVR_ATmega644P__) || defined(__AVR_ATmega128RFA1__)\n';
-  NumberTubeVar+='#define NumberSerial Serial1\n';
+  
+
+
+
+  if(ss==2) {
+    NumberTubeVar+='#define NumberSerial Serial1\n';
+  } else if(ss==4) {
+    NumberTubeVar+='SoftwareSerial mySerialS(4, 5);\n';
+  } else if(ss==6) {
+    NumberTubeVar+='SoftwareSerial mySerialS(6, 7);\n';
+  } else if(ss==8) {
+    NumberTubeVar+='SoftwareSerial mySerialS(8, 9);\n';
+  } else if(ss==10) {
+    NumberTubeVar+='SoftwareSerial mySerialS(10, 11);\n';
+  } else if(ss=1) {
+    NumberTubeVar+='SoftwareSerial mySerialS(-1, 9);\n';
+  }
+
+
+
+  // NumberTubeVar+='#define NumberSerial Serial1\n';
   NumberTubeVar+='#endif\n';
   NumberTubeVar+='\n';
   NumberTubeVar+='Number LED('+indexNum+', &NumberSerial);\n';
