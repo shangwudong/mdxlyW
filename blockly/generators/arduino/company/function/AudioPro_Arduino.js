@@ -19,7 +19,7 @@ Blockly.Arduino.audioProPrepare = function() {
 	audioProSetup+='	while (1);\n';
 	audioProSetup+='}\n';
 	audioProSetup+='midiPlayer.applyPatch(MIDIPatch, sizeof(MIDIPatch) / sizeof(uint16_t));\n';
-	audioProSetup+='midiPlayer.midisetVolume(0, 127);\n';
+	audioProSetup+='midiPlayer.midiSetVolume(0, 127);\n';
 	audioProSetup+='midiPlayer.midiSetBank(0, VS1053_BANK_DEFAULT);\n';
 	audioProSetup+='midiPlayer.midiSetInstrument(0, VS1053_GM1_ELECTRIC_GRAND_PIANO);\n';
 
@@ -120,7 +120,7 @@ Blockly.Arduino.audioProSDPrepare = function() {
 	audioProSDSetup+='if (!SD.begin(SD_PIN_SEL)) {\n';
 	audioProSDSetup+='	return;\n';
 	audioProSDSetup+='}\n';
-	audioProSDSetup+='musicPlayer.midisetVolume('+volume+', '+volume+');\n';
+	audioProSDSetup+='musicPlayer.midiSetVolume('+volume+', '+volume+');\n';
 	// audioProSDSetup+='musicPlayer.useInterrupt(VS1053_PIN_DREQ);\n';
 
 	Blockly.Arduino.setups_['setup_AudioProSD'] = audioProSDSetup;
