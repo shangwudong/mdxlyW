@@ -10,7 +10,7 @@ Blockly.Arduino.OLED_begin = function() {
   Blockly.Arduino.definitions_['define_oled'] = '#include <U8glib.h>';
 
   var defineOled='U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_NONE);\n';
-  defineOled+='#define setFont_L u8g.setFont(u8g_font_timB14)\n';
+  defineOled+='#define setFont_L u8g.setFont(u8g_font_unifont)\n';
   defineOled+='#define setFont_S u8g.setFont(u8g_font_fixed_v0r)\n';
   defineOled+='#define setFont_M u8g.setFont(u8g_font_9x15)\n';
 

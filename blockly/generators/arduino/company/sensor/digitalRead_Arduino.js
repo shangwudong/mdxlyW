@@ -9,7 +9,7 @@ Blockly.Arduino.microduinoCrash = function() {
   var digitalPin = Blockly.Arduino.valueToCode(this, 'digitalPin', Blockly.Arduino.ORDER_ATOMIC);
   var action = this.getFieldValue('action');
 
-  Blockly.Arduino.setups_['setup_'+digitalPin] = 'pinMode('+digitalPin+',INPUT);';
+  // Blockly.Arduino.setups_['setup_'+digitalPin] = 'pinMode('+digitalPin+',INPUT);';
   var code='';
 
   if(action=="down") {
@@ -25,7 +25,7 @@ Blockly.Arduino.microduinoTuch = function() {
   var digitalPin = Blockly.Arduino.valueToCode(this, 'digitalPin', Blockly.Arduino.ORDER_ATOMIC);
   var action = this.getFieldValue('action');
 
-  Blockly.Arduino.setups_['setup_'+digitalPin] = 'pinMode('+digitalPin+',INPUT);';
+  // Blockly.Arduino.setups_['setup_'+digitalPin] = 'pinMode('+digitalPin+',INPUT);';
   var code='';
 
   if(action=="down") {
