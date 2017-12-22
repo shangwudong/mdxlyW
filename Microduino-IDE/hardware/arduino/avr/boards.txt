@@ -66,7 +66,7 @@ uno.upload.speed=115200
 uno.bootloader.tool=avrdude
 uno.bootloader.low_fuses=0xFF
 uno.bootloader.high_fuses=0xDE
-uno.bootloader.extended_fuses=0x05
+uno.bootloader.extended_fuses=0xFD
 uno.bootloader.unlock_bits=0x3F
 uno.bootloader.lock_bits=0x0F
 uno.bootloader.file=optiboot/optiboot_atmega328.hex
@@ -76,52 +76,6 @@ uno.build.f_cpu=16000000L
 uno.build.board=AVR_UNO
 uno.build.core=arduino
 uno.build.variant=standard
-
-##############################################################
-
-nano.name=Arduino Nano
-
-nano.upload.tool=avrdude
-nano.upload.protocol=arduino
-
-nano.bootloader.tool=avrdude
-nano.bootloader.unlock_bits=0x3F
-nano.bootloader.lock_bits=0x0F
-
-nano.build.f_cpu=16000000L
-nano.build.board=AVR_NANO
-nano.build.core=arduino
-nano.build.variant=eightanaloginputs
-
-## Arduino Nano w/ ATmega328
-## -------------------------
-nano.menu.cpu.atmega328=ATmega328
-
-nano.menu.cpu.atmega328.upload.maximum_size=30720
-nano.menu.cpu.atmega328.upload.maximum_data_size=2048
-nano.menu.cpu.atmega328.upload.speed=57600
-
-nano.menu.cpu.atmega328.bootloader.low_fuses=0xFF
-nano.menu.cpu.atmega328.bootloader.high_fuses=0xDA
-nano.menu.cpu.atmega328.bootloader.extended_fuses=0x05
-nano.menu.cpu.atmega328.bootloader.file=atmega/ATmegaBOOT_168_atmega328.hex
-
-nano.menu.cpu.atmega328.build.mcu=atmega328p
-
-## Arduino Nano w/ ATmega168
-## -------------------------
-nano.menu.cpu.atmega168=ATmega168
-
-nano.menu.cpu.atmega168.upload.maximum_size=14336
-nano.menu.cpu.atmega168.upload.maximum_data_size=1024
-nano.menu.cpu.atmega168.upload.speed=19200
-
-nano.menu.cpu.atmega168.bootloader.low_fuses=0xff
-nano.menu.cpu.atmega168.bootloader.high_fuses=0xdd
-nano.menu.cpu.atmega168.bootloader.extended_fuses=0x00
-nano.menu.cpu.atmega168.bootloader.file=atmega/ATmegaBOOT_168_diecimila.hex
-
-nano.menu.cpu.atmega168.build.mcu=atmega168
 
 ##############################################################
 
@@ -331,16 +285,16 @@ mini.build.board=AVR_MINI
 mini.build.core=arduino
 mini.build.variant=eightanaloginputs
 
-## Arduino Mini w/ ATmega328
-## -------------------------
-mini.menu.cpu.atmega328=ATmega328
+## Arduino Mini w/ ATmega328P
+## --------------------------
+mini.menu.cpu.atmega328=ATmega328P
 
 mini.menu.cpu.atmega328.upload.maximum_size=28672
 mini.menu.cpu.atmega328.upload.maximum_data_size=2048
 mini.menu.cpu.atmega328.upload.speed=115200
 
 mini.menu.cpu.atmega328.bootloader.high_fuses=0xd8
-mini.menu.cpu.atmega328.bootloader.extended_fuses=0x05
+mini.menu.cpu.atmega328.bootloader.extended_fuses=0xFD
 mini.menu.cpu.atmega328.bootloader.file=optiboot/optiboot_atmega328-Mini.hex
 
 mini.menu.cpu.atmega328.build.mcu=atmega328p
@@ -354,7 +308,7 @@ mini.menu.cpu.atmega168.upload.maximum_data_size=1024
 mini.menu.cpu.atmega168.upload.speed=19200
 
 mini.menu.cpu.atmega168.bootloader.high_fuses=0xdd
-mini.menu.cpu.atmega168.bootloader.extended_fuses=0x00
+mini.menu.cpu.atmega168.bootloader.extended_fuses=0xF8
 mini.menu.cpu.atmega168.bootloader.file=atmega/ATmegaBOOT_168_ng.hex
 
 mini.menu.cpu.atmega168.build.mcu=atmega168
@@ -374,9 +328,9 @@ pro.build.board=AVR_PRO
 pro.build.core=arduino
 pro.build.variant=eightanaloginputs
 
-## Arduino Pro or Pro Mini (5V, 16 MHz) w/ ATmega328
-## -------------------------------------------------
-pro.menu.cpu.16MHzatmega328=ATmega328 (5V, 16 MHz)
+## Arduino Pro or Pro Mini (5V, 16 MHz) w/ ATmega328P
+## --------------------------------------------------
+pro.menu.cpu.16MHzatmega328=ATmega328P (5V, 16 MHz)
 
 pro.menu.cpu.16MHzatmega328.upload.maximum_size=30720
 pro.menu.cpu.16MHzatmega328.upload.maximum_data_size=2048
@@ -384,15 +338,15 @@ pro.menu.cpu.16MHzatmega328.upload.speed=57600
 
 pro.menu.cpu.16MHzatmega328.bootloader.low_fuses=0xFF
 pro.menu.cpu.16MHzatmega328.bootloader.high_fuses=0xDA
-pro.menu.cpu.16MHzatmega328.bootloader.extended_fuses=0x05
+pro.menu.cpu.16MHzatmega328.bootloader.extended_fuses=0xFD
 pro.menu.cpu.16MHzatmega328.bootloader.file=atmega/ATmegaBOOT_168_atmega328.hex
 
 pro.menu.cpu.16MHzatmega328.build.mcu=atmega328p
 pro.menu.cpu.16MHzatmega328.build.f_cpu=16000000L
 
-## Arduino Pro or Pro Mini (3.3V, 8 MHz) w/ ATmega328
-## --------------------------------------------------
-pro.menu.cpu.8MHzatmega328=ATmega328 (3.3V, 8 MHz)
+## Arduino Pro or Pro Mini (3.3V, 8 MHz) w/ ATmega328P
+## ---------------------------------------------------
+pro.menu.cpu.8MHzatmega328=ATmega328P (3.3V, 8 MHz)
 
 pro.menu.cpu.8MHzatmega328.upload.maximum_size=30720
 pro.menu.cpu.8MHzatmega328.upload.maximum_data_size=2048
@@ -400,7 +354,7 @@ pro.menu.cpu.8MHzatmega328.upload.speed=57600
 
 pro.menu.cpu.8MHzatmega328.bootloader.low_fuses=0xFF
 pro.menu.cpu.8MHzatmega328.bootloader.high_fuses=0xDA
-pro.menu.cpu.8MHzatmega328.bootloader.extended_fuses=0x05
+pro.menu.cpu.8MHzatmega328.bootloader.extended_fuses=0xFD
 pro.menu.cpu.8MHzatmega328.bootloader.file=atmega/ATmegaBOOT_168_atmega328_pro_8MHz.hex
 
 pro.menu.cpu.8MHzatmega328.build.mcu=atmega328p
@@ -416,7 +370,7 @@ pro.menu.cpu.16MHzatmega168.upload.speed=19200
 
 pro.menu.cpu.16MHzatmega168.bootloader.low_fuses=0xff
 pro.menu.cpu.16MHzatmega168.bootloader.high_fuses=0xdd
-pro.menu.cpu.16MHzatmega168.bootloader.extended_fuses=0x00
+pro.menu.cpu.16MHzatmega168.bootloader.extended_fuses=0xF8
 pro.menu.cpu.16MHzatmega168.bootloader.file=atmega/ATmegaBOOT_168_diecimila.hex
 
 pro.menu.cpu.16MHzatmega168.build.mcu=atmega168
@@ -432,7 +386,7 @@ pro.menu.cpu.8MHzatmega168.upload.speed=19200
 
 pro.menu.cpu.8MHzatmega168.bootloader.low_fuses=0xc6
 pro.menu.cpu.8MHzatmega168.bootloader.high_fuses=0xdd
-pro.menu.cpu.8MHzatmega168.bootloader.extended_fuses=0x00
+pro.menu.cpu.8MHzatmega168.bootloader.extended_fuses=0xF8
 pro.menu.cpu.8MHzatmega168.bootloader.file=atmega/ATmegaBOOT_168_pro_8MHz.hex
 
 pro.menu.cpu.8MHzatmega168.build.mcu=atmega168
@@ -440,3 +394,37 @@ pro.menu.cpu.8MHzatmega168.build.f_cpu=8000000L
 
 ##############################################################
 
+yunmini.name=Arduino Yún Mini
+yunmini.upload.via_ssh=true
+
+yunmini.vid.0=0x2a03
+yunmini.pid.0=0x0050
+yunmini.vid.1=0x2a03
+yunmini.pid.1=0x8050
+
+yunmini.upload.tool=avrdude
+yunmini.upload.protocol=avr109
+yunmini.upload.maximum_size=28672
+yunmini.upload.maximum_data_size=2560
+yunmini.upload.speed=57600
+yunmini.upload.disable_flushing=true
+yunmini.upload.use_1200bps_touch=true
+yunmini.upload.wait_for_upload_port=true
+
+yunmini.bootloader.tool=avrdude
+yunmini.bootloader.low_fuses=0xff
+yunmini.bootloader.high_fuses=0xd8
+yunmini.bootloader.extended_fuses=0xfb
+yunmini.bootloader.file=caterina/Caterina-Yunmini.hex
+yunmini.bootloader.unlock_bits=0x3F
+yunmini.bootloader.lock_bits=0x2F
+
+yunmini.build.mcu=atmega32u4
+yunmini.build.f_cpu=16000000L
+yunmini.build.vid=0x2a03
+yunmini.build.pid=0x8050
+yunmini.build.usb_product="Arduino Yún Mini"
+yunmini.build.board=AVR_YUNMINI
+yunmini.build.core=arduino
+yunmini.build.variant=yun
+yunmini.build.extra_flags={build.usb_flags}

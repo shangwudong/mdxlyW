@@ -26,7 +26,7 @@
 #include <avr/pgmspace.h>
 
 #define NUM_DIGITAL_PINS            20
-#define NUM_ANALOG_INPUTS           6
+#define NUM_ANALOG_INPUTS           8
 #define analogInputToDigitalPin(p)  ((p < 6) ? (p) + 14 : -1)
 
 #if defined(__AVR_ATmega8__)
@@ -35,13 +35,22 @@
 #define digitalPinHasPWM(p)         ((p) == 3 || (p) == 5 || (p) == 6 || (p) == 9 || (p) == 10 || (p) == 11)
 #endif
 
-static const uint8_t SS   = 10;
-static const uint8_t MOSI = 11;
-static const uint8_t MISO = 12;
-static const uint8_t SCK  = 13;
+#define PIN_SPI_SS    (10)
+#define PIN_SPI_MOSI  (11)
+#define PIN_SPI_MISO  (12)
+#define PIN_SPI_SCK   (13)
 
-static const uint8_t SDA = 18;
-static const uint8_t SCL = 19;
+static const uint8_t SS   = PIN_SPI_SS;
+static const uint8_t MOSI = PIN_SPI_MOSI;
+static const uint8_t MISO = PIN_SPI_MISO;
+static const uint8_t SCK  = PIN_SPI_SCK;
+
+#define PIN_WIRE_SDA        (18)
+#define PIN_WIRE_SCL        (19)
+
+static const uint8_t SDA = PIN_WIRE_SDA;
+static const uint8_t SCL = PIN_WIRE_SCL;
+
 #define LED_BUILTIN 13
 
 #define PIN_A0   (14)
